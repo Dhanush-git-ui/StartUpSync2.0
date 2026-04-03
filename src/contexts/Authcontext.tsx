@@ -90,6 +90,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   });
 
   const handleSignInWithGoogle = () => {
+    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+    if (!clientId) {
+      alert("Google Sign-In is not configured. Please check environment variables.");
+      return;
+    }
     login();
   };
 

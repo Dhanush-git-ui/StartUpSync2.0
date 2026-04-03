@@ -50,8 +50,10 @@ const ChatInterface = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Auto-scroll to the bottom when new messages arrive
-    endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
+    // Auto-scroll to the bottom only when new user/assistant messages arrive
+    if (messages.length > 1) {
+      endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
   }, [messages]);
 
   const handleSendMessage = async () => {

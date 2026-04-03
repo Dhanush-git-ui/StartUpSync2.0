@@ -158,7 +158,9 @@ const AgentInterface = () => {
 
   // Auto-scroll to the bottom when new outputs arrive
   useEffect(() => {
-    endOfOutputsRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (outputs.length > 0) {
+      endOfOutputsRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
   }, [outputs]);
 
   const handleGenerateOutput = async () => {

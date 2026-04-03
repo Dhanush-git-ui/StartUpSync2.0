@@ -17,6 +17,10 @@ const queryClient = new QueryClient();
 // Get Google OAuth client ID from environment
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
 
+if (!GOOGLE_CLIENT_ID) {
+  console.error("VITE_GOOGLE_CLIENT_ID is missing. Google Auth will not work. Please add it to your .env file or Vercel Environment Variables.");
+}
+
 const App = () => (
   <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
     <QueryClientProvider client={queryClient}>

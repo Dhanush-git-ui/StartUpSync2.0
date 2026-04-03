@@ -34,8 +34,8 @@ export async function getGeminiResponse(
     if (!API_KEY) {
       throw new Error("Gemini API key not configured in environment variables.");
     }
-    // Using Gemini 2.5 Flash (latest)
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+    // Using Gemini 1.5 Flash (stable and fast)
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
     // Combine system prompt and user query into a single user message
     const systemPrompt = getSystemPromptForDomain(domain, outputFormat, conciseMode);

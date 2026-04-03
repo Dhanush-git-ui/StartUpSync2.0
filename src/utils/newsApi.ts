@@ -34,7 +34,8 @@ export async function fetchIndianBusinessNews(forceRefresh = false): Promise<New
     const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
     
     if (!API_KEY) {
-      throw new Error('News API key not configured. Please add VITE_NEWS_API_KEY to .env file');
+      console.warn('News API key not configured. Returning fallback news data.');
+      return getFallbackNews();
     }
     
     // Get current date and 7 days ago for the date range
